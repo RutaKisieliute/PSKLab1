@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Assign Doctor to Patient</title>
+</h:head>
+<h:body>
+
+    <h2>Assign Doctor to Patient</h2>
+
+    <h:form>
+        <h:panelGrid columns="1">
+            <!-- Doctor Selection: Bind to doctor ID -->
+            <h:outputLabel value="Select Doctor:" for="doctorSelect" />
+            <h:selectOneMenu id="doctorSelect" value="#{doctorPatientUsecase.selectedDoctorId}">
+                <f:selectItems value="#{doctorPatientUsecase.doctors}" var="doc"
+                               itemValue="#{doc.id}" itemLabel="#{doc.name} #{doc.lastname}" />
+            </h:selectOneMenu>
+
+            <!-- Patient Selection: Bind to patient ID -->
+            <h:outputLabel value="Select Patient:" for="patientSelect" />
+            <h:selectOneMenu id="patientSelect" value="#{doctorPatientUsecase.selectedPatientId}">
+                <f:selectItems value="#{doctorPatientUsecase.patients}" var="pat"
+                               itemValue="#{pat.id}" itemLabel="#{pat.name} #{pat.lastname}" />
+            </h:selectOneMenu>
+        </h:panelGrid>
+
+        <br/>
+
+        <!-- Display assigned patients for all doctors -->
+        <h:outputText value="Assigned Patients:" />
+        <h:dataTable value="#{doctorPatientUsecase.assignedPatients}" var="assignedPatient">
+            <h:column>
+                <f:facet name="header">Patient Name</f:facet>
+                #{assignedPatient.name} #{assignedPatient.lastname}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Birthday</f:facet>
+                #{assignedPatient.birthday}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Doctor Name</f:facet>
+                <!-- Show the doctor assigned to this patient -->
+                <h:dataTable value="#{assignedPatient.doctors}" var="doctor">
+                    <h:column>
+                        #{doctor.name} #{doctor.lastname} - #{doctor.specialization}
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+        </h:dataTable>
+
+        <br/>
+
+        <!-- Assign Doctor to Patient Button -->
+        <h:commandButton value="Assign Doctor to Patient" action="#{doctorPatientUsecase.assignDoctorToPatient}" />
+
+    </h:form>
+
+    <!-- Display any messages -->
+    <h:messages globalOnly="true" />
+
+</h:body>
+</html>

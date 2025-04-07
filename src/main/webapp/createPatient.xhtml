@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Create New Patient</title>
+</head>
+<body>
+<h2>Add New Patient</h2>
+
+<!-- Form to input patient details -->
+<h:form>
+    <h:outputLabel value="First Name" for="name" />
+    <h:inputText id="name" value="#{patientUsecase.patient.name}" required="true" />
+    <h:message for="name" />
+
+    <h:outputLabel value="Last Name" for="lastname" />
+    <h:inputText id="lastname" value="#{patientUsecase.patient.lastname}" required="true" />
+    <h:message for="lastname" />
+
+    <h:outputLabel value="Birthday" for="birthDate" />
+    <h:inputText id="birthDate" value="#{patientUsecase.patient.birthday}">
+        <f:convertDateTime pattern="yyyy-MM-dd" />
+    </h:inputText>
+    <h:message for="birthDate" />
+
+    <h:outputLabel value="Phone Number" for="phoneNumber" />
+    <h:inputText id="phoneNumber" value="#{patientUsecase.patient.phoneNumber}" required="true" />
+    <h:message for="phoneNumber" />
+
+    <h:commandButton value="Save" action="#{patientUsecase.createPatient}" />
+</h:form>
+
+<h:link value="Back to Patient List" outcome="patientList" />
+</body>
+</html>

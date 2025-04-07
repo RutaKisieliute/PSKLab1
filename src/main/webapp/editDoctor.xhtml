@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Edit Doctor</title>
+</head>
+<body>
+<h2>Edit Doctor</h2>
+
+<h:form>
+    <h:outputLabel value="First Name" for="name" />
+    <h:inputText id="name" value="#{doctorUsecase.doctor.name}" required="true" />
+
+    <h:outputLabel value="Last Name" for="lastname" />
+    <h:inputText id="lastname" value="#{doctorUsecase.doctor.lastname}" required="true" />
+
+    <h:outputLabel value="Specialization" for="specialization" />
+    <h:inputText id="specialization" value="#{doctorUsecase.doctor.specialization}" required="true" />
+
+    <h:outputLabel value="Email" for="email" />
+    <h:inputText id="email" value="#{doctorUsecase.doctor.email}" required="true" />
+
+    <h:outputLabel value="Phone Number" for="phoneNumber" />
+    <h:inputText id="phoneNumber" value="#{doctorUsecase.doctor.phoneNumber}" required="true" />
+
+    <h:commandButton value="Update" action="#{doctorUsecase.updateDoctor}" />
+</h:form>
+
+<h:link value="Back to Doctor List" outcome="doctorList" />
+</body>
+</html>

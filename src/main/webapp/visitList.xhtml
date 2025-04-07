@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Visit List</title>
+</h:head>
+<h:body>
+
+    <h2>All Visits</h2>
+
+    <!-- Display all visits -->
+    <h:dataTable value="#{visitUsecase.allVisits}" var="visit">
+        <h:column>
+            <f:facet name="header">Doctor Name</f:facet>
+            #{visit.doctor.name} #{visit.doctor.lastname}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Patient Name</f:facet>
+            #{visit.patient.name} #{visit.patient.lastname}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Visit Date</f:facet>
+            #{visit.date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Visit Name</f:facet>
+            #{visit.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Notes</f:facet>
+            #{visit.notes}
+        </h:column>
+    </h:dataTable>
+
+    <br/>
+
+    <!-- Link to create new visit -->
+    <h:link value="Create New Visit" outcome="createVisit" />
+
+</h:body>
+</html>

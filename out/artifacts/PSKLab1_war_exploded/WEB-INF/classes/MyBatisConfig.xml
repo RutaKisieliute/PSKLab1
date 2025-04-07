@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="med.mybatis.model.Doctor" alias="Doctor"/>
+        <typeAlias type="med.mybatis.model.Patient" alias="Patient"/>
+        <typeAlias type="med.mybatis.model.MedicalHistory" alias="MedicalHistory"/>
+        <typeAlias type="med.mybatis.model.Visit" alias="Visit"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:/H2DS"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis.xml/DoctorMapper.xml"/>
+        <mapper resource="mybatis.xml/PatientMapper.xml"/>
+        <mapper resource="mybatis.xml/MedicalHistoryMapper.xml"/>
+        <mapper resource="mybatis.xml/VisitMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Welcome to the Medical Application</h1>
+<p>Choose an option below:</p>
+
+<!-- Link to the Doctor's page -->
+<h:link value="Go to Doctor List" outcome="doctorList" />
+<br/>
+<h:link value="Go to Patient List" outcome="patientList" />
+<br/>
+<h:link value="Go to Patient Doctor assignation List" outcome="assignDoctorToPatient" />
+<br/>
+<h:link value="Go to Visit List" outcome="visitList" />
+<br/>
+<br/>
+<h:link value="Go to Doctor List" outcome="batisDoctorList" />
+
+<!-- Or you can use a button as well -->
+<!--
+<h:form>
+    <h:commandButton value="Go to Doctor List" action="doctorList" />
+</h:form>
+-->
+
+</body>
+</html>
