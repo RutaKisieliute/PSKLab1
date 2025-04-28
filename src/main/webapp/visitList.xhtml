@@ -9,7 +9,6 @@
 
     <h2>All Visits</h2>
 
-    <!-- Display all visits -->
     <h:dataTable value="#{visitUsecase.allVisits}" var="visit">
         <h:column>
             <f:facet name="header">Doctor Name</f:facet>
@@ -35,7 +34,6 @@
 
     <br/>
 
-    <!-- Link to create new visit -->
     <h:link value="Create New Visit" outcome="createVisit" />
 
 </h:body>

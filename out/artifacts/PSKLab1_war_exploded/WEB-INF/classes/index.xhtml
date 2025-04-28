@@ -6,26 +6,28 @@
 </head>
 <body>
 <h1>Welcome to the Medical Application</h1>
+<p>Total visits (application scope): #{pageUsecase.currentAppCount}</p>
+<p>Visits in your session: #{pageUsecase.currentSessionCount}</p>
 <p>Choose an option below:</p>
 
-<!-- Link to the Doctor's page -->
 <h:link value="Go to Doctor List" outcome="doctorList" />
 <br/>
 <h:link value="Go to Patient List" outcome="patientList" />
 <br/>
-<h:link value="Go to Patient Doctor assignation List" outcome="assignDoctorToPatient" />
+<h:link value="Go to Patient Doctor assignation List" outcome="doctorToPatientAssign" />
 <br/>
 <h:link value="Go to Visit List" outcome="visitList" />
 <br/>
 <br/>
 <h:link value="Go to Doctor List" outcome="batisDoctorList" />
+<br/>
+<h:link value="Go to Patient List" outcome="batisPatientList" />
+<br/>
+<h:link value="Go to Patient Doctor assignation List" outcome="batisDoctorToPatientAssign" />
+<br/>
+<h:link value="Go to Visit List" outcome="batisVisitList" />
+<br/>
 
-<!-- Or you can use a button as well -->
-<!--
-<h:form>
-    <h:commandButton value="Go to Doctor List" action="doctorList" />
-</h:form>
--->
 
 </body>
 </html>

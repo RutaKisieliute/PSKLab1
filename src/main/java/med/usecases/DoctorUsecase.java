@@ -23,10 +23,10 @@ public class DoctorUsecase implements Serializable {
     private DoctorService doctorService;
 
     @Getter @Setter
-    private Doctor doctor = new Doctor(); // For creating or editing a doctor
+    private Doctor doctor = new Doctor();
 
     @Getter @Setter
-    private Integer doctorId; // Passed from request params (for edit)
+    private Integer doctorId;
 
     @Getter
     private List<Doctor> allDoctors;
@@ -46,7 +46,6 @@ public class DoctorUsecase implements Serializable {
             }
         }
 
-        // Load all doctors for listing, optional
         this.allDoctors = doctorService.getAllDoctors();
     }
 
@@ -55,7 +54,7 @@ public class DoctorUsecase implements Serializable {
         if (doctorService.createDoctor(doctor)) {
             return "doctorList?faces-redirect=true";
         }
-        return null; // Stay on the same page
+        return null;
     }
 
     @Transactional

@@ -80,15 +80,12 @@ public class DoctorPatientUsecase implements Serializable {
 
             if (doctor != null && patient != null) {
                 if (!patient.getDoctors().contains(doctor)) {
-                    // Establish bidirectional relationship
                     patient.getDoctors().add(doctor);
                     doctor.getPatients().add(patient);
 
-                    // Persist both sides
                     patientService.updatePatient(patient);
                     doctorService.updateDoctor(doctor);
 
-                    // Refresh UI state
                     loadAssignedPatients();
                     selectedPatientId = null;
                     return null;

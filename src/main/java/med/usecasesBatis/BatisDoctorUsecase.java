@@ -1,9 +1,9 @@
-package med.usecases;
+package med.usecasesBatis;
 
 import lombok.Getter;
 import lombok.Setter;
-import med.mybatis.model.Doctor;  // Use MyBatis Doctor model
-import med.services.BatisDoctorService;  // Inject BatisDoctorService
+import med.mybatis.model.Doctor;
+import med.servicesBatis.BatisDoctorService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -20,13 +20,13 @@ import java.util.Map;
 public class BatisDoctorUsecase implements Serializable {
 
     @Inject
-    private BatisDoctorService doctorService;  // Inject the new BatisDoctorService
+    private BatisDoctorService doctorService;
 
     @Getter @Setter
-    private Doctor doctor = new Doctor(); // For creating or editing a doctor
+    private Doctor doctor = new Doctor();
 
     @Getter @Setter
-    private Integer doctorId; // Passed from request params (for edit)
+    private Integer doctorId;
 
     @Getter
     private List<Doctor> allDoctors;
@@ -40,14 +40,14 @@ public class BatisDoctorUsecase implements Serializable {
         if (idParam != null) {
             try {
                 this.doctorId = Integer.parseInt(idParam);
-                this.doctor = doctorService.findById(doctorId); // Fetch doctor by ID using MyBatis
+                this.doctor = doctorService.findById(doctorId);
             } catch (NumberFormatException e) {
                 System.err.println("Invalid doctorId: " + idParam);
             }
         }
 
-        // Load all doctors for listing, optional
-        this.allDoctors = doctorService.getAllDoctors(); // Get all doctors using MyBatis
+        // Call the service method to retrieve doctors with visits
+        this.allDoctors = doctorService.findDoctorWithVisits();
     }
 
     @Transactional
@@ -55,7 +55,7 @@ public class BatisDoctorUsecase implements Serializable {
         if (doctorService.createDoctor(doctor)) {
             return "batisDoctorList?faces-redirect=true";
         }
-        return null; // Stay on the same page if creation fails
+        return null;
     }
 
     @Transactional
@@ -63,14 +63,20 @@ public class BatisDoctorUsecase implements Serializable {
         if (doctorService.updateDoctor(doctor)) {
             return "batisDoctorList?faces-redirect=true";
         }
-        return null; // Stay on the same page if update fails
+        return null;
     }
 
     public String loadDoctorForUpdate() {
         if (doctorId != null) {
-            this.doctor = doctorService.findById(doctorId); // Load doctor to edit
+            this.doctor = doctorService.findById(doctorId);
             return "batisEditDoctor?faces-redirect=true";
         }
-        return null; // Redirect to create page if no doctorId
+        return null;
     }
+
+    // Add this getter to make it accessible to JSF
+    public List<Doctor> getFindDoctorWithVisits() {
+        return doctorService.findDoctorWithVisits();
+    }
+
 }

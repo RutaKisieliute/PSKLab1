@@ -1,5 +1,7 @@
 package med.mybatis.model;
 
+import java.util.List;
+
 public class Doctor {
     /**
      *
@@ -197,5 +199,16 @@ public class Doctor {
      */
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
+    }
+
+    //added by hand:
+
+    private List<Visit> visits;
+    public List<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visit> visits) {
+        this.visits = visits;
     }
 }

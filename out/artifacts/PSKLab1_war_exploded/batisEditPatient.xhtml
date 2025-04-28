@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Edit Patient</title>
+</head>
+<body>
+<h2>Edit Patient</h2>
+
+<h:form>
+    <h:outputLabel value="First Name" for="name" />
+    <h:inputText id="name" value="#{batisPatientUsecase.patient.name}" required="true" />
+
+    <h:outputLabel value="Last Name" for="lastname" />
+    <h:inputText id="lastname" value="#{batisPatientUsecase.patient.lastname}" required="true" />
+
+    <h:outputLabel for="birthDate" value="Birth Date" />
+    <h:inputText id="birthDate" value="#{batisPatientUsecase.patient.birthDate}" required="true">
+        <f:convertDateTime pattern="yyyy-MM-dd" />
+    </h:inputText>
+
+
+    <h:outputLabel value="Phone Number" for="phoneNumber" />
+    <h:inputText id="phoneNumber" value="#{batisPatientUsecase.patient.phoneNumber}" required="true" />
+
+    <h:commandButton value="Update" action="#{batisPatientUsecase.updatePatient}" />
+</h:form>
+
+<h:link value="Back to Patient List" outcome="batisPatientList" />
+</body>
+</html>

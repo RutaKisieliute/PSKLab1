@@ -13,6 +13,12 @@
     <result column="NOTES" jdbcType="VARCHAR" property="notes" />
     <result column="DOCTOR_ID" jdbcType="INTEGER" property="doctorId" />
     <result column="PATIENT_ID" jdbcType="INTEGER" property="patientId" />
+
+    <!-- added by hand: -->
+    <result column="DOCTOR_NAME" property="doctorName" />
+    <result column="DOCTOR_LASTNAME" property="doctorLastName" />
+    <result column="PATIENT_NAME" property="patientName" />
+    <result column="PATIENT_LASTNAME" property="patientLastName" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -67,4 +73,20 @@
     select ID, DATE, NAME, NOTES, DOCTOR_ID, PATIENT_ID
     from PUBLIC.VISIT
   </select>
+
+
+  <!-- added by hand: -->
+  <select id="selectAllWithNames" resultMap="BaseResultMap">
+    SELECT
+      v.*,
+      d.NAME AS DOCTOR_NAME,
+      d.LASTNAME AS DOCTOR_LASTNAME,
+      p.NAME AS PATIENT_NAME,
+      p.LASTNAME AS PATIENT_LASTNAME
+    FROM
+      PUBLIC.VISIT v
+        LEFT JOIN PUBLIC.DOCTOR d ON v.DOCTOR_ID = d.ID
+        LEFT JOIN PUBLIC.PATIENT p ON v.PATIENT_ID = p.ID
+  </select>
+
 </mapper>

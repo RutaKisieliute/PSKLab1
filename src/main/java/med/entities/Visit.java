@@ -36,11 +36,11 @@ public class Visit implements Serializable {
     private String notes;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id") // matches the DB column
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id") // matches the DB column
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     @Override

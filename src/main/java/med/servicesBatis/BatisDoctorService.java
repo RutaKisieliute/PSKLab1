@@ -1,7 +1,5 @@
-package med.services;
+package med.servicesBatis;
 
-import lombok.Getter;
-import lombok.Setter;
 import med.mybatis.model.Doctor;
 import med.mybatis.dao.DoctorMapper;
 
@@ -17,7 +15,7 @@ import java.util.Set;
 public class BatisDoctorService {
 
     @Inject
-    private DoctorMapper doctorMapper;  // Inject MyBatis DoctorMapper
+    private DoctorMapper doctorMapper;
 
     @Inject
     private Validator validator;
@@ -33,7 +31,7 @@ public class BatisDoctorService {
             return false;
         }
 
-        doctorMapper.insert(doctor); // Insert doctor using MyBatis
+        doctorMapper.insert(doctor);
         return true;
     }
 
@@ -48,15 +46,19 @@ public class BatisDoctorService {
             return false;
         }
 
-        doctorMapper.updateByPrimaryKey(doctor); // Update doctor using MyBatis
+        doctorMapper.updateByPrimaryKey(doctor);
         return true;
     }
 
     public Doctor findById(Integer id) {
-        return doctorMapper.selectByPrimaryKey(id); // Fetch doctor by ID using MyBatis
+        return doctorMapper.selectByPrimaryKey(id);
     }
 
     public List<Doctor> getAllDoctors() {
-        return doctorMapper.selectAll(); // Fetch all doctors using MyBatis
+        return doctorMapper.selectAll();
+    }
+
+    public List<Doctor> findDoctorWithVisits() {
+        return doctorMapper.findDoctorWithVisits();
     }
 }

@@ -9,8 +9,7 @@
 <body>
 <h2>Doctor List</h2>
 
-<!-- Table to display the list of doctors -->
-<h:dataTable value="#{batisDoctorUsecase.allDoctors}" var="doctor">
+<h:dataTable value="#{batisDoctorUsecase.findDoctorWithVisits}" var="doctor">
     <h:column>
         <f:facet name="header">First Name</f:facet>
         #{doctor.name}
@@ -30,6 +29,10 @@
     <h:column>
         <f:facet name="header">Phone Number</f:facet>
         #{doctor.phoneNumber}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Visit Count</f:facet>
+        #{doctor.visits.size()}
     </h:column>
     <h:column>
         <f:facet name="header">Actions</f:facet>

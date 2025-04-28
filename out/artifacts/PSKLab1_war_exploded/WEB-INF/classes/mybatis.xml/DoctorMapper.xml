@@ -13,6 +13,16 @@
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
     <result column="SPECIALIZATION" jdbcType="VARCHAR" property="specialization" />
+
+    <!--added by hand-->
+    <collection property="visits" ofType="med.mybatis.model.Visit">
+      <id column="VISIT_ID" jdbcType="INTEGER" property="id"/>
+      <result column="VISIT_NAME" jdbcType="VARCHAR" property="name"/>
+      <result column="VISIT_DATE" jdbcType="TIMESTAMP" property="date"/>
+      <result column="VISIT_NOTES" jdbcType="VARCHAR" property="notes"/>
+      <result column="DOCTOR_ID" jdbcType="INTEGER" property="doctorId"/>
+      <result column="PATIENT_ID" jdbcType="INTEGER" property="patientId"/>
+    </collection>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -67,4 +77,27 @@
     select ID, EMAIL, LASTNAME, NAME, PHONE_NUMBER, SPECIALIZATION
     from PUBLIC.DOCTOR
   </select>
+
+  <!--added by hand:-->
+  <select id="findDoctorWithVisits" resultMap="BaseResultMap">
+    SELECT
+      d.ID,
+      d.EMAIL,
+      d.LASTNAME,
+      d.NAME,
+      d.PHONE_NUMBER,
+      d.SPECIALIZATION,
+
+      v.ID AS VISIT_ID,
+      v.NAME AS VISIT_NAME,
+      v.DATE AS VISIT_DATE,
+      v.NOTES AS VISIT_NOTES,
+      v.DOCTOR_ID,
+      v.PATIENT_ID
+
+    FROM DOCTOR d
+           LEFT JOIN VISIT v ON d.ID = v.DOCTOR_ID
+  </select>
+
+
 </mapper>

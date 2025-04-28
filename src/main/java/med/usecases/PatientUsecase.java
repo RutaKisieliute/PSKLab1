@@ -22,10 +22,10 @@ public class PatientUsecase implements Serializable {
     private PatientService patientService;
 
     @Getter @Setter
-    private Patient patient = new Patient(); // For creating or editing a patient
+    private Patient patient = new Patient();
 
     @Getter @Setter
-    private Integer patientId; // Used when editing an existing patient
+    private Integer patientId;
 
     @Getter
     private List<Patient> allPatients;
@@ -42,7 +42,7 @@ public class PatientUsecase implements Serializable {
                 this.patient = patientService.findById(patientId);
             } catch (NumberFormatException e) {
                 System.err.println("Invalid patientId: " + idParam);
-                this.patient = new Patient(); // fallback
+                this.patient = new Patient();
             }
         }
 

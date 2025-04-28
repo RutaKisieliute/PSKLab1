@@ -33,7 +33,7 @@ public class DoctorService {
             return false;
         }
 
-        doctorDAO.persist(doctor); // Persisting doctor to the database
+        doctorDAO.persist(doctor);
         return true;
     }
 
@@ -48,7 +48,7 @@ public class DoctorService {
             return false;
         }
 
-        doctorDAO.update(doctor); // Updating doctor in the database
+        doctorDAO.update(doctor);
         return true;
     }
 

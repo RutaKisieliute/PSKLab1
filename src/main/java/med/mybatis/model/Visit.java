@@ -200,4 +200,25 @@ public class Visit {
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
+
+    // added by hand
+
+    private String doctorName;
+    private String patientName;
+
+    private String doctorLastName;
+    private String patientLastName;
+
+
+    public String getDoctorName() { return doctorName; }
+    public void setDoctorName(String doctorName) { this.doctorName = doctorName; }
+
+    public String getPatientName() { return patientName; }
+    public void setPatientName(String patientName) { this.patientName = patientName; }
+
+    public String getDoctorLastName() { return doctorLastName; }
+    public void setDoctorLastName(String doctorLastName) { this.doctorLastName = doctorLastName; }
+
+    public String getPatientLastName() { return patientLastName; }
+    public void setPatientLastName(String patientLastName) { this.patientLastName = patientLastName; }
 }

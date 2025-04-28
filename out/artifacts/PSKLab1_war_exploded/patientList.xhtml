@@ -9,7 +9,6 @@
 <body>
 <h2>Patient List</h2>
 
-<!-- Table to display the list of patients -->
 <h:dataTable value="#{patientUsecase.allPatients}" var="patient">
     <h:column>
         <f:facet name="header">First Name</f:facet>
@@ -35,7 +34,6 @@
     </h:column>
 </h:dataTable>
 
-<!-- Link to create a new patient -->
 <h:link value="Add New Patient" outcome="createPatient" />
 </body>
 </html>

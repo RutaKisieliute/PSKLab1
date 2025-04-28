@@ -45,4 +45,8 @@ public interface VisitMapper {
      * @mbg.generated Mon Apr 07 12:33:12 EEST 2025
      */
     int updateByPrimaryKey(Visit record);
+
+    //added by hand:
+
+    List<Visit> selectAllWithNames();
 }

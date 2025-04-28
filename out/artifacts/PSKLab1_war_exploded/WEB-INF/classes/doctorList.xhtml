@@ -9,7 +9,6 @@
 <body>
 <h2>Doctor List</h2>
 
-<!-- Table to display the list of doctors -->
 <h:dataTable value="#{doctorUsecase.allDoctors}" var="doctor">
     <h:column>
         <f:facet name="header">First Name</f:facet>
@@ -32,6 +31,10 @@
         #{doctor.phoneNumber}
     </h:column>
     <h:column>
+        <f:facet name="header">Visit Count</f:facet>
+        #{doctor.visits.size()}
+    </h:column>
+    <h:column>
         <f:facet name="header">Actions</f:facet>
         <h:link value="Edit" outcome="editDoctor">
             <f:param name="doctorId" value="#{doctor.id}" />
@@ -39,7 +42,6 @@
     </h:column>
 </h:dataTable>
 
-<!-- Link to create a new doctor -->
 <h:link value="Add New Doctor" outcome="createDoctor" />
 </body>
 </html>
